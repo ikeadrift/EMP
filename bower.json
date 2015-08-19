@@ -1,6 +1,9 @@
 {
   "name": "emp",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "keymaster": "~1.6.3",
+    "jquery": "~2.1.4"
+  },
   "devDependencies": {}
 }

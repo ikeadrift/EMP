@@ -20,6 +20,8 @@
         "https://*.facebook.com/*"
       ],
       "js": [
+        "bower_components/jquery/dist/jquery.min.js",
+        "bower_components/keymaster/keymaster.js",
         "scripts/contentscript.js"
       ],
       "run_at": "document_end",
