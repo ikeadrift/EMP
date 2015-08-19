@@ -6,19 +6,13 @@ function disableKeypressListener() {
 
 function enableKeypressListener(postId) {
   key('ctrl+shift+enter', function() {
-    // var ajaxifyElement = $('<a/>', {
-    //   rel: 'async-post',
-    //   ajaxify: '/ajax/litestand/follow_post?message_id=' + postId + '&follow=0'
-    // });
 
-    var ajaxifyElement = $('<a href="#" rel="async-post" ajaxify="/ajax/litestand/follow_post?message_id=883063921763607&amp;follow=1" role="menuitem"><span><span class="_54nh">Turn on notifications</span></span></a>');
+    var AsyncRequest = require('AsyncRequest');
+    var unfollowPost = new AsyncRequest('/ajax/litestand/follow_post?follow=0&message_id=' + postId);
+    if (unfollowPost.send()) {
 
-    $('body').append(ajaxifyElement);
-    ajaxifyElement.trigger('click');
-    // ajaxifyElement.remove();
-    console.log('clicked');
-
-    disableKeypressListener();
+      disableKeypressListener();
+    }
   });
 }
 
