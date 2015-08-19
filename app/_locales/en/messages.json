@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "EMP",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "more likeNOtifications",
+    "description": "The description of the application"
+  }
+}
