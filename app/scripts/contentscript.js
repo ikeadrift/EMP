@@ -56,6 +56,7 @@ $(document).ready(function() {
           type: 'AsyncRequest',
           endpoint: '/ajax/litestand/follow_post?follow=0&message_id=' + request.postId
         }, window.location.origin);
+        $('#EMP').parents('.UFIInputContainer').find('.UFICommentAttachmentButtons').append('<div style="width: 14px; height: 14px; margin-top: 9px; margin-left: -24px;margin-bottom:4px; background-image:url("chrome.extension.getURL("images/comment-icon.png")");background-size: contain;"></div>').fadeIn().next().delay(500).fadeOut();
 
         disableKeypressListener();
       }

@@ -32,5 +32,8 @@
   "permissions": [
     "webRequest",
     "*://*.facebook.com/ufi/add/comment/"
+  ],
+  "web_accessable_resources": [
+    "images/comment-icon.png"
   ]
 }
