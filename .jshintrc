@@ -22,6 +22,8 @@
     "chrome": true,
     "crypto": true,
     "key": true,
-    "$": true
+    "$": true,
+    "_": true,
+    "React": true
   }
 }

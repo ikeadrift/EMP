@@ -10,7 +10,8 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "scripts/chromereload.js"
+      "scripts/chromereload.js",
+      "scripts/background.js"
     ]
   },
   "content_scripts": [
@@ -27,5 +28,9 @@
       "run_at": "document_end",
       "all_frames": false
     }
+  ],
+  "permissions": [
+    "webRequest",
+    "*://*.facebook.com/ufi/add/comment/"
   ]
 }
