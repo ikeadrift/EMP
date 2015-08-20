@@ -56,9 +56,15 @@ $(document).ready(function() {
           type: 'AsyncRequest',
           endpoint: '/ajax/litestand/follow_post?follow=0&message_id=' + request.postId
         }, window.location.origin);
-        var EMPicon = chrome.extension.getURL('images/comment-icon.png');
-        console.log(EMPicon);
-        $('#EMP').parents('.UFIInputContainer').find('.UFICommentAttachmentButtons').append($('<div id="EMPicon"></div>').css({"width":"14px","height":"14px","margin-top":"9px","margin-left":"-24px","background-image":"url('"+EMPicon+"')","background-size":"contain"})).fadeIn().next().delay(500).fadeOut();
+
+        var iconImage = chrome.extension.getURL('images/comment-icon.png');
+        console.log(iconImage);
+
+        var iconDiv = '<div id="EMPicon" style="width: 14px; height: 14px; margin-top: 9px; margin-left: -24px;margin-bottom:4px; background-image:url(http://i.imgur.com/hngKR5R.png);background-size: contain;"></div>';
+
+        //add this when everything's working //var iconDiv = '<div id="EMPicon" style="width: 14px; height: 14px; margin-top: 9px; margin-left: -24px;margin-bottom:4px; background-image:url(' + iconImage + ');background-size: contain;"></div>';
+        $(iconDiv).hide().appendTo($('#EMP').parents('.UFIInputContainer').find('.UFICommentAttachmentButtons')).fadeIn(500).delay(500).fadeOut(500);
+        $('#EMPicon').remove();
 
         disableKeypressListener();
       }
