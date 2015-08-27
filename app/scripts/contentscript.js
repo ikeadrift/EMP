@@ -1,5 +1,5 @@
 'use strict';
-var EMP_SHORTCUT = 'shift+enter';
+var EMP_SHORTCUT = 'command+enter, ctrl+enter';
 
 
 // BRIDGE
