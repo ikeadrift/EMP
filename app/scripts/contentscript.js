@@ -1,32 +1,12 @@
 'use strict';
-var EMP_SHORTCUT = 'ctrl+shift+enter';
+var EMP_SHORTCUT = 'shift+enter';
 
 
 // BRIDGE
 
-function bridge () {
+function bridge() {
+
   window.addEventListener('message', function(request) {
-
-    if (request.data !== undefined && request.data.type === 'SubmitComment') {
-      var keyboardEvent = document.createEvent('KeyboardEvent');
-      var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
-
-
-      keyboardEvent[initMethod](
-                         'keydown', // event type : keydown, keyup, keypress
-                          true, // bubbles
-                          true, // cancelable
-                          window, // viewArg: should be window
-                          false, // ctrlKeyArg
-                          false, // altKeyArg
-                          false, // shiftKeyArg
-                          false, // metaKeyArg
-                          13, // keyCodeArg : unsigned long the virtual key code, else 0
-                          0 // charCodeArgs : unsigned long the Unicode character associated with the depressed key, else 0
-      );
-      window.getSelection().anchorNode.dispatchEvent(keyboardEvent);
-      console.log(window.getSelection().anchorNode);
-    }
 
     if (request.data !== undefined && request.data.type === 'AsyncRequest') {
       console.log(request.data.endpoint);
@@ -70,10 +50,6 @@ $(document).ready(function() {
   function enableKeypressListener() {
     key(EMP_SHORTCUT, function() {
       listenForCommentPost = true;
-
-      window.postMessage({
-        type: 'SubmitComment'
-      }, window.location.origin);
     });
   }
 
