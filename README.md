@@ -1,6 +1,8 @@
 # EMP
 more like NO-tifications
 
+https://chrome.google.com/webstore/detail/emp-auto-silence-facebook/ipohfmoaibjjpjkganncblhlhiobeghf
+
 ---
 
 You’re having a leisurely scroll through The Facebook, when you come across a seriously edgy post. It’s highly opinionated; it’s shocking and provocative. You should probably sit this one out. Obviously, you can’t resist throwing yourself into the brewing shitstorm.
