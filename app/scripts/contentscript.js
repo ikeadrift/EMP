@@ -9,10 +9,12 @@ function bridge() {
   window.addEventListener('message', function(request) {
 
     if (request.data !== undefined && request.data.type === 'AsyncRequest') {
-      console.log(request.data.endpoint);
 
       var AsyncRequest = require('AsyncRequest');
-      var unfollowPost = new AsyncRequest(request.data.endpoint);
+      var unfollowPost = new AsyncRequest('/ajax/litestand/follow_post?follow=0&message_id=' + request.data.postId).setData({
+        'follow': 0,
+        'message_id': request.data.postId
+      });
       unfollowPost.send();
     }
 
@@ -32,19 +34,30 @@ $(document).ready(function() {
   chrome.runtime.onMessage.addListener(function(request) {
     if (request.postId !== undefined) {
       if (listenForCommentPost) {
-        window.postMessage({
-          type: 'AsyncRequest',
-          endpoint: '/ajax/litestand/follow_post?follow=0&message_id=' + request.postId
-        }, window.location.origin);
+        setTimeout(function() {
+          window.postMessage({
+            type: 'AsyncRequest',
+            'postId': request.postId
+          }, window.location.origin);
+        }, 500);
 
-        var iconImage = chrome.extension.getURL('images/comment-icon.png');
-        console.log(iconImage);
-
-        var iconDiv = '<div id="EMPicon" style="width: 14px; height: 14px; margin-top: 9px; margin-left: -24px;margin-bottom:4px; background-image:url(http://i.imgur.com/hngKR5R.png);background-size: contain;"></div>';
-
-        //add this when everything's working //var iconDiv = '<div id="EMPicon" style="width: 14px; height: 14px; margin-top: 9px; margin-left: -24px;margin-bottom:4px; background-image:url(' + iconImage + ');background-size: contain;"></div>';
-        $(iconDiv).hide().appendTo($('#EMP').parents('.UFIInputContainer').find('.UFICommentAttachmentButtons')).fadeIn(500).delay(500).fadeOut(500);
-        $('#EMPicon').remove();
+        var buttons = $('#EMP')
+          .parents('.UFIInputContainer')
+          .find('.UFICommentAttachmentButtons');
+        var iconDiv = buttons.find('.UFICommentStickerIcon').clone();
+        iconDiv.css({
+          'float': 'left',
+          'background-image': 'url(' + chrome.extension.getURL('/images/comment-icon.png') + ')',
+          'background-size': '14px',
+          'background-repeat': 'no-repeat',
+          'background-position': '0%'
+        });
+        $(iconDiv)
+          .prependTo(buttons)
+          .fadeOut(0)
+          .fadeIn(500)
+          .delay(1500)
+          .fadeOut(500);
 
         disableKeypressListener();
       }
