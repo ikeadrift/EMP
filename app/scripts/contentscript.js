@@ -44,7 +44,7 @@ $(document).ready(function() {
         var buttons = $('#EMP')
           .parents('.UFIInputContainer')
           .find('.UFICommentAttachmentButtons');
-        var iconDiv = buttons.find('.UFICommentStickerIcon').clone();
+        var iconDiv = buttons.find('.UFICommentStickerIcon').last().clone();
         iconDiv.css({
           'float': 'left',
           'background-image': 'url(' + chrome.extension.getURL('/images/comment-icon.png') + ')',
@@ -57,9 +57,9 @@ $(document).ready(function() {
           .fadeOut(0)
           .fadeIn(500)
           .delay(1500)
-          .fadeOut(500);
-
-        disableKeypressListener();
+          .fadeOut(500, function() {
+            this.remove();
+          });
       }
     }
   });
