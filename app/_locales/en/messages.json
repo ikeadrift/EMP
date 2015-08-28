@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "EMP - Auto-Silence Facebook Notifications",
+    "message": "EMP - ⌘+Enter to Unsubscribe",
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "more like NOtifications, amiright?",
+    "message": "more like NO-tifications, amiright?",
     "description": "The description of the application"
   },
   "shortName": {
